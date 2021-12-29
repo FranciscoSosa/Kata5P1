@@ -8,7 +8,7 @@ public class Kata5P1 {
     }
 
     private static Connection connect(){
-        String url = "jdbc:sqlite:KATA5";
+        String url = "jdbc:sqlite:KATA5.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
