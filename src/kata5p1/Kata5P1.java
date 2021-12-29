@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Kata5P1 {
     public static void main(String[] args) {
-        query();
+        addEmailTable();
     }
 
     private static Connection connect(){
@@ -29,6 +29,18 @@ public class Kata5P1 {
                         rs.getString("Apellidos") + "\t" +
                         rs.getString("Departamento") + "\t");
             }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void addEmailTable(){
+        String createEmail = "CREATE TABLE IF NOT EXISTS EMAIL (\n"
+                + " id integer PRIMARY KEY AUTOINCREMENT, \n"
+                + " direccion text NOT NULL);";
+        try(Connection conn = connect();
+            Statement stmt = conn.createStatement()){
+            stmt.execute(createEmail);
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
